@@ -95,15 +95,6 @@ def butterworth_highpass_filter(signal, cutoff_frequency, sampling_period, orde)
 
         for n in range(2, (len(signal))):
             y[n] = ((4/sampling_period_squared)*signal[n] - (8/sampling_period_squared)*signal[n-1] + (4/sampling_period_squared)*signal[n-2] - (2*omega_c-(8/sampling_period_squared))*y[n-1] - (omega_c-(2*math.sqrt(2)*omega_c/sampling_period)+(4/sampling_period_squared))*y[n-2])/(omega_c + 2*math.sqrt(2)*omega_c/sampling_period + (4/sampling_period_squared))    
-    i=0
-    temp=y
-    while i <= len(y):
-        if i < 10:
-            continue
-        else:
-            y[i]= temp[i-10]
-        i+=1
-
     return y
 
 def segmentation_p_qrs_t(signal_pre, N):
